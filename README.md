@@ -1,6 +1,6 @@
  <div align="center">
 
-<img src="logo.png" width="220" alt="REDMI Python Website Scanner Logo">
+<img src="./img/logo.png" width="220" alt="REDMI Python Website Scanner Logo">
 
 # 🟠 REDMI — Python Website Scanner
 
