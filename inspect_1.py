@@ -1,15 +1,30 @@
 
+from rich import print
+from ui_2 import *
+from ui_2 import show_error
 import requests as rq
 import time 
+import rich
 
-url = (input("Enter the URL: "))
+
+
+
+
+banner()
+print("  " * 69)
+
+print("[bold #FF8C00 underline]Enter the URL...[/bold #FF8C00 underline]",end=" ")
+url = input()
 try:
     start = time.time()
     response = rq.get(url, timeout=5)
     end = time.time()
     elapsed_time = end - start
     print(f"Response time: {elapsed_time:.2f} seconds")
-    print(f"Response headers: {response.headers}")
+    print("==================[bold #FF8C00 underline] RESPONSE HEADERS[/bold #FF8C00 underline] ============================")
+    for number ,(key, value) in enumerate(response.headers.items(), start=1):
+        print(f"[{number}]. {key}: {value}")
+    print("=" * 69)
     print(f"Status code: {response.status_code}")
     print("=" * 69)
     print("=" * 69)
@@ -60,19 +75,22 @@ try:
     
 
 
-except rq.exceptions.Timeout as e:
-    print(f"The request timed out. The URL may be unreachable or taking too long to respond. Error details: {e}") 
+except rq.exceptions.Timeout as error:
+    print(f"The request timed out. The URL may be unreachable or taking too long to respond. Error details: ") 
+    show_error(error)
     print("=" * 69)
     print("=" * 69)
     
     
-except rq.exceptions.RequestException as e:
-    print(f"An error occurred while fetching the URL Error details: {e}")
+except rq.exceptions.RequestException as error:
+    print(f"An error occurred while fetching the URL Error details: {error}")
+    show_error(error)
     print("=" * 69)
     print("=" * 69)
     
     
-except Exception as e:
-    print(f"An unexpected error occurred while fetching the URL: {e}")
+except Exception as error:
+    print(f"An unexpected error occurred while fetching the URL: {error}")
+    show_error(error)
     print("=" * 69)
     print("=" * 69)
