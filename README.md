@@ -62,7 +62,7 @@ REDMI/
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_REPOSITORY_URL
+git clone salahj-dev/INCEPECT-PY
 ```
 
 ### 2. Enter the project directory
